@@ -40,6 +40,9 @@ def _get_file_data_and_name(full_filename, content, resource):
     if full_filename.endswith(".url"):
         filename = full_filename[:-4]
         file_data = request(file_data, "GET").text
+    elif full_filename.endswith(".mac"):
+        filename = full_filename[:-4]
+        filename = ":".join(filename[i:i+2] for i in range(0, len(filename), 2))
     else:
         filename = full_filename
 
